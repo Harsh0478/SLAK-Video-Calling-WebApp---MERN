@@ -1,0 +1,7 @@
+FrontEnd - React, Tailwind, Tanstack Query
+Server - MongoDB, Express.js, Node.js
+Authentication - Clerk
+Real-Time Messaging - Stream
+Background Check - Inngest
+Error Monitoring - Sentry 
+Code Suggestion - CodeRabbit 
