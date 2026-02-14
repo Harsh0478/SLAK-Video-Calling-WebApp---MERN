@@ -9,7 +9,7 @@ const syncUser = inngest.createFunction(
   { id: "Sync-User" },
   { event: "clerk/user.created" },
   async ({ event }) => {
-    connectDB();
+    await connectDB();
 
     const { id, email_addresses, first_name, last_name, image_url } =
       event.data;
@@ -21,7 +21,7 @@ const syncUser = inngest.createFunction(
       imageUrl: image_url,
     };
 
-    User.create(newUser);
+    await User.create(newUser);
 
     // TODO: Add error handling and logging
   },
