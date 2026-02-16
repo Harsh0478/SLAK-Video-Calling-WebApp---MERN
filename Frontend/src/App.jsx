@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route, Navigate } from "react-router";
 import {
   SignedIn,
   SignedOut,
@@ -7,18 +8,26 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
+import Auth from "./pages/Auth";
+import Homepage from "./pages/Homepage";
+
 function App() {
   return (
-    <header>
-      {/* Show the sign-in and sign-up buttons when the user is signed out */}
-      <SignedOut>
-        <SignInButton mode="modal" />
-      </SignedOut>
-      {/* Show the user button when the user is signed in */}
+    <>
       <SignedIn>
-        <UserButton />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/auth" element={<Navigate to={"/"} replace />} />
+        </Routes>
       </SignedIn>
-    </header>
+
+      <SignedOut>
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<Navigate to={"/auth"} replace />} />
+        </Routes>
+      </SignedOut>
+    </>
   );
 }
 
